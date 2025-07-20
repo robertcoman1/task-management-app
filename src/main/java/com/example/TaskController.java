@@ -15,9 +15,20 @@ public class TaskController {
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
+
     @GetMapping
     public List<Task> getTasks() {
         return taskService.getAllTasks();
+    }
+
+    @GetMapping("/done")
+    public List<Task> getDoneTasks() {
+        return taskService.getAllDoneTasks();
+    }
+
+    @GetMapping("/unfinished")
+    public List<Task> getUnfinishedTasks() {
+        return taskService.getAllUnfinishedTasks();
     }
 
     @PostMapping
