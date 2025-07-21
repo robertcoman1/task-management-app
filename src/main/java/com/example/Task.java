@@ -49,6 +49,7 @@ public class Task {
     public Boolean getDone() {
         return done;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -35,4 +35,22 @@ public class TaskService {
     public void addTask(Task task) {
         taskRepository.save(task);
     }
+
+    public void addMoreTasks(List<Task> tasks) {
+        taskRepository.saveAll(tasks);
+    }
+
+    public void deleteTask(Integer id) {
+        taskRepository.deleteById(id);
+    }
+
+    public void deleteFinishedTasks() {
+        taskRepository.deleteAll(getAllDoneTasks());
+    }
+
+    public void makeTaskFinished(Integer id) {
+        Task task = taskRepository.findById(id).orElseThrow();
+        task.setDone(true);
+        taskRepository.save(task);
+    }
 }
