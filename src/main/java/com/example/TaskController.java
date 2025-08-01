@@ -3,6 +3,9 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,12 +38,12 @@ public class TaskController {
     }
 
     @PostMapping
-    public void addNewTask(@RequestBody Task task) {
+    public void addNewTask(@RequestBody @Valid Task task) {
         taskService.addTask(task);
     }
 
     @PostMapping("/batch")
-    public void addMultipleTasks(@RequestBody List<Task> tasks) {
+    public void addMultipleTasks(@RequestBody @Valid List<@Valid Task> tasks) {
         taskService.addMoreTasks(tasks);
     }
 

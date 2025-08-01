@@ -5,6 +5,7 @@ import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Id;
 
 @Entity
@@ -13,11 +14,12 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Task name must not be blank")
     private String taskName;
+
     private Boolean done;
 
     public Task(){
-
     }
 
     public Task(Integer id, String taskName, Boolean done) {
