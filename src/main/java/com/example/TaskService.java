@@ -33,15 +33,34 @@ public class TaskService {
     }
 
     public void addTask(Task task) {
+        List<Task> list_tasks = taskRepository.findAll();
+        for (Task t : list_tasks) {
+            if (t.equals(task)) {
+                return;
+            } else if (t.normString().equals(task.normString())) {
+                t.setDone(task.getDone());
+                taskRepository.save(t);
+                return;
+            }
+        }
+
         taskRepository.save(task);
     }
 
     public void addMoreTasks(List<Task> tasks) {
-        taskRepository.saveAll(tasks);
+        for (Task t : tasks) {
+            addTask(t);
+        }
     }
 
-    public void deleteTask(Integer id) {
-        taskRepository.deleteById(id);
+    public void deleteTask(String taskName) {
+        String normatedTaskName = taskName.trim().replaceAll("\\s+", " ").toLowerCase();
+
+        taskRepository.findAll().forEach((task) -> {
+            if (task.normString().equals(normatedTaskName)) {
+                taskRepository.delete(task);
+            }
+        });
     }
 
     public void deleteFinishedTasks() {

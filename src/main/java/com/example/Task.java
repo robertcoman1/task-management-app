@@ -52,6 +52,10 @@ public class Task {
         return done;
     }
 
+    public String normString() {
+        return this.taskName.trim().replaceAll("\\s+", " ").toLowerCase();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -61,8 +65,7 @@ public class Task {
             return false;
         }
         Task t = (Task) o;
-        return this.id == t.id
-                && this.taskName.equals(t.taskName)
+        return this.normString().equals(t.normString())
                 && this.done == t.done;
     }
 

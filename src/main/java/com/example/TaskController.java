@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+@CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("api/v1/tasks")
 public class TaskController {
@@ -52,9 +54,9 @@ public class TaskController {
         taskService.makeTaskFinished(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTaskById(@PathVariable Integer id) {
-        taskService.deleteTask(id);
+    @DeleteMapping("/{taskName}")
+    public void deleteTaskById(@PathVariable String taskName) {
+        taskService.deleteTask(taskName);
     }
 
     @DeleteMapping("/finished")
