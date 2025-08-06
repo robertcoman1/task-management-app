@@ -49,9 +49,9 @@ public class TaskController {
         taskService.addMoreTasks(tasks);
     }
 
-    @PutMapping("/{id}")
-    public void taskFinished(@PathVariable Integer id) {
-        taskService.makeTaskFinished(id);
+    @PutMapping("/{taskName}/{status}")
+    public void taskFinished(@PathVariable String taskName, @PathVariable Boolean status) {
+        taskService.setTaskStatus(taskName, status);
     }
 
     @DeleteMapping("/{taskName}")

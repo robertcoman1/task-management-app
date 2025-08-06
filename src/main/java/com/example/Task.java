@@ -7,11 +7,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Id;
+import jakarta.persistence.OrderBy;
 
 @Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OrderBy()
     private Integer id;
 
     @NotBlank(message = "Task name must not be blank")

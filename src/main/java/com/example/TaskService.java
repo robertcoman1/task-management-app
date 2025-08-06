@@ -2,6 +2,7 @@ package com.example;
 import java.util.List;
 
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class TaskService {
     }
 
     public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+        return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public List<Task> getAllDoneTasks() {
@@ -56,9 +57,10 @@ public class TaskService {
     public void deleteTask(String taskName) {
         String normatedTaskName = taskName.trim().replaceAll("\\s+", " ").toLowerCase();
 
-        taskRepository.findAll().forEach((task) -> {
+        taskRepository.findAll().forEach(task -> {
             if (task.normString().equals(normatedTaskName)) {
                 taskRepository.delete(task);
+                return;
             }
         });
     }
@@ -67,9 +69,15 @@ public class TaskService {
         taskRepository.deleteAll(getAllDoneTasks());
     }
 
-    public void makeTaskFinished(Integer id) {
-        Task task = taskRepository.findById(id).orElseThrow();
-        task.setDone(true);
-        taskRepository.save(task);
+    public void setTaskStatus(String taskName, Boolean status) {
+        String normatedTaskName = taskName.trim().replaceAll("\\s+", " ").toLowerCase();
+
+        taskRepository.findAll().forEach(task -> {
+            if (task.normString().equals(normatedTaskName)) {
+                task.setDone(status);
+                taskRepository.save(task);
+                return;
+            }
+        });
     }
 }
