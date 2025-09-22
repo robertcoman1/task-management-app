@@ -59,7 +59,7 @@ public class TaskController {
         taskService.deleteTask(taskName);
     }
 
-    @DeleteMapping("/finished")
+    @DeleteMapping("/allFinished")
     public void deleteAllFinishedTasks() {
         taskService.deleteFinishedTasks();
     }
