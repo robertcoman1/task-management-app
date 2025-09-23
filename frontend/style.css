@@ -1,0 +1,52 @@
+#main-title {
+    color: blue;
+    font-family: Helvetica;
+    text-align: center;
+}
+.buttonClass {
+    font-size: 2em;
+    color: white;
+    background-color: rgb(109, 109, 247);
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+.buttonClass:hover {
+    background-color: rgb(1, 1, 243);
+}
+#button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+#tasksContainer {
+    display: block;
+    background-color: #f0f4ff;
+    text-align: center;
+    margin: 20px auto;
+    border: 5px solid #4a90e2;
+    border-radius: 50px;
+    padding: 20px;
+    width: 50%;
+    min-height: 100px;
+}
+.tasksContainerButton{
+    display: block;
+    background-color: rgb(109, 109, 247);
+    font-family: Helvetica;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 50px;
+    width: 50%;
+    min-height: 100px;
+}
+.tasksContainerButton:hover {
+    background-color: rgb(1, 1, 243);
+}
