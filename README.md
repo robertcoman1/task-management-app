@@ -1,4 +1,4 @@
-# To-Do Web App
+# Task Management App
 
 A full-stack to-do application with task management features. Users can add, delete, and mark tasks as completed. The application is built with Spring Boot for the backend, PostgreSQL (running in Docker) for persistent storage, and a static frontend built with HTML, CSS, and JavaScript.
 
