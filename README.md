@@ -27,7 +27,7 @@ A full-stack to-do application with task management features. Users can add, del
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/robertcoman1/to-do-web-app.git
+git clone https://github.com/robertcoman1/task-management-app.git
 cd to-do-web-app
 ```
 
